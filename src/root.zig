@@ -120,7 +120,6 @@ pub fn Lexer(comptime TokenType: type) type {
         pub fn scan_source(lexer: *Lexer(TokenType), token_kind_list: []const TokenKind(TokenType), eof_token: TokenType) void {
             while (!lexer.at_end()) {
                 lexer.start_pos = lexer.current_pos;
-                std.debug.print("{c}", .{lexer.source.ptr[lexer.current_pos]});
                 var found_token = false;
                 for (token_kind_list) |token_kind| {
                     if (token_kind.token_matcher(lexer)) {
